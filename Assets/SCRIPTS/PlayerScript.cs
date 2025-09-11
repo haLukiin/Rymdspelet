@@ -5,7 +5,9 @@ public class PlayerScript : MonoBehaviour
 {
 
     public float playerSpeed = 5;
-    
+
+
+    public GameObject projectile;
         
   // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -60,7 +62,12 @@ public class PlayerScript : MonoBehaviour
         }
         
 
+       if (Input.GetKey(KeyCode.Space))
+        {
+            Instantiate(projectile, this.transform.position, this.transform.rotation);
+            
 
+        }
     }
 
     
