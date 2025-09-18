@@ -3,17 +3,11 @@ using UnityEngine;
 public class EnemyScript : MonoBehaviour
 {
    
-    public float speed = 5;
-
-
-
-
-
-
-
-
-
-
+    public float speed = 5f;
+    private int direction = Random.Range(1, -1);
+    public float health = 100f;
+    public GameObject projectile;
+    public float fireCooldown = 1f;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -27,6 +21,13 @@ public class EnemyScript : MonoBehaviour
     {
         
     }
+
+    void takeDamage(float damage)
+    {
+        health -= damage;
+    }
+
+
 
 
 }
