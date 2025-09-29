@@ -67,9 +67,9 @@ public class PlayerScript : MonoBehaviour
 
         }
     }
-    void takeDamage(float damage)
+    public void TakeDamage(float damage)
     {
-        currentHealth -= damage;
+        maxHealth -= damage;
     }
 }
 

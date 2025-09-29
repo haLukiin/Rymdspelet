@@ -2,20 +2,30 @@ using UnityEngine;
 
 public class enemyBulletLogic : MonoBehaviour
 {
+
+    public float bulletSpeed = 5;
+    public float damage = 5f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        Destroy(this.gameObject, 5);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        transform.Translate(Vector3.up * bulletSpeed * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D Player)
     {
-
+        var playerScript = Player.GetComponent<PlayerScript>();
+        if (playerScript != null)
+       
+        {
+            playerScript.TakeDamage(damage);
+        }
+        Destroy(this.gameObject);
     }
 }

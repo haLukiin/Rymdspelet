@@ -20,10 +20,10 @@ public class bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D Enemy)
     {
-        var enemyScript = Enemy.GetComponent<enemyScript>();
+        var enemyScript = Enemy.GetComponent<EnemyScript>();
         if (enemyScript != null)
         {
-            enemyScript.takeDamage(damage);
+            enemyScript.TakeDamage(damage);
         }
         Destroy(this.gameObject);
     }
