@@ -18,14 +18,19 @@ public class bullet : MonoBehaviour
         transform.Translate(Vector3.up * bulletSpeed * Time.deltaTime );
     }
 
-    private void OnTriggerEnter2D(Collider2D Enemy)
+    private void OnTriggerEnter2D(Collider2D Collision)
     {
-        var enemyScript = Enemy.GetComponent<EnemyScript>();
-        if (enemyScript != null)
+        if (Collision.gameObject.CompareTag("Enemy"))
         {
-            enemyScript.TakeDamage(damage);
+            EnemyScript Enemy = Collision.gameObject.GetComponent<EnemyScript>();
+            if (Enemy != null)
+            {
+                Enemy.TakeDamage(damage);
+
+            }
+            Destroy(gameObject);
         }
-        Destroy(this.gameObject);
+
     }
 
     

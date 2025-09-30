@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
-    public GameObject Collision;
+    
     public float speed = 5f;
     private int direction;
     public float health = 100f;
@@ -23,7 +23,8 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.down * direction * speed * Time.deltaTime);
+        transform.Translate(Vector3.down * speed * Time.deltaTime);
+        transform.Translate(Vector3.right * direction * speed * Time.deltaTime);
         fireCooldown -= Time.deltaTime;
         if (fireCooldown <= 0)
         {
@@ -37,15 +38,22 @@ public class EnemyScript : MonoBehaviour
     {
         health -= damage;
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
- 
-            Debug.Log("Enemy crashed into the player");
-            Destroy(collision.gameObject);
+
+            playerScript Player = collision.gameObject.GetComponent<playerScript>();
+
+            if (Player != null )
+            {
+                Player.TakeDamage(20F);
+
+            }
             Destroy(gameObject);
+
         }
+
 
 
     }

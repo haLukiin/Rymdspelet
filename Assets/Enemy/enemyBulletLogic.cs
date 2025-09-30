@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class enemyBulletLogic : MonoBehaviour
+public class PlayerBulletLogic : MonoBehaviour
 {
 
     public float bulletSpeed = 5;
@@ -20,14 +20,17 @@ public class enemyBulletLogic : MonoBehaviour
         this.transform.rotation = Quaternion.Euler(0, 0, 180);
     }
 
-    private void OnTriggerEnter2D(Collider2D Player)
+    private void OnTriggerEnter2D(Collider2D Collision)
     {
-        var playerScript = Player.GetComponent<PlayerScript>();
-        if (playerScript != null)
-       
+        if (Collision.gameObject.CompareTag("Player"))
         {
-            playerScript.TakeDamage(damage);
+            playerScript Player = Collision.gameObject.GetComponent<playerScript>();
+            if (Player != null)
+            {
+                Player.TakeDamage(damage);
+
+            }
+            Destroy(gameObject);
         }
-        Destroy(this.gameObject);
     }
 }

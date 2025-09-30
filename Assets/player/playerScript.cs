@@ -1,14 +1,14 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerScript : MonoBehaviour
+public class playerScript : MonoBehaviour
 {
 
     public float playerSpeed = 5;
     public float maxHealth = 100f;
     public float currentHealth = 100f; 
-    public float fireCooldown = 0.5f;
-    public float fireDelay = 0f;
+    private float fireCooldown = 0.5f;
+    private float fireDelay = 0f;
     
 
 
@@ -72,7 +72,7 @@ public class PlayerScript : MonoBehaviour
     }
     public void TakeDamage(float damage)
     {
-        maxHealth -= damage;
+        currentHealth -= damage;
     }
 
     
