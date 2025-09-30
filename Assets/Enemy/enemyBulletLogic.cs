@@ -10,12 +10,14 @@ public class enemyBulletLogic : MonoBehaviour
     void Start()
     {
         Destroy(this.gameObject, 5);
+
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.Translate(Vector3.up * bulletSpeed * Time.deltaTime);
+        this.transform.rotation = Quaternion.Euler(0, 0, 180);
     }
 
     private void OnTriggerEnter2D(Collider2D Player)

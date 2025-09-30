@@ -9,6 +9,7 @@ public class PlayerScript : MonoBehaviour
     public float currentHealth = 100f; 
     public float fireCooldown = 0.5f;
     public float fireDelay = 0f;
+    
 
 
 
@@ -17,6 +18,8 @@ public class PlayerScript : MonoBehaviour
   // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+       
+
         transform.position = new Vector3(0, -4, 0);
     }
 
@@ -62,7 +65,7 @@ public class PlayerScript : MonoBehaviour
         fireDelay -= Time.deltaTime;
         if (Input.GetKey(KeyCode.Space) && fireDelay <= 0)
         {
-            Instantiate(projectile, new Vector3(this.transform.position.x, this.transform.position.y + 0.5f, 0), this.transform.rotation);
+            Instantiate(projectile, new Vector3(this.transform.position.x, this.transform.position.y + 1f, 0), this.transform.rotation);
             fireDelay = fireCooldown;
 
         }
@@ -71,9 +74,10 @@ public class PlayerScript : MonoBehaviour
     {
         maxHealth -= damage;
     }
+
+    
+
 }
-
-
 
 
 
