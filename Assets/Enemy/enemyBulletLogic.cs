@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerBulletLogic : MonoBehaviour
+public class enemybulletLogic : MonoBehaviour
 {
 
     public float bulletSpeed = 5;

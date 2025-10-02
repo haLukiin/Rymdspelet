@@ -50,17 +50,17 @@ public class playerScript : MonoBehaviour
         {        
             transform.Translate(Vector3.right * playerSpeed * Time.deltaTime);
         }
-        if (transform.position.x >= 11f)
+        if (transform.position.x >= 16f)
         {
-            transform.position = new Vector3(-10.5f, transform.position.y, 0);
+            transform.position = new Vector3(-15f, transform.position.y, 0);
         }
         if (Input.GetKey(KeyCode.A))
         {
             transform.Translate(Vector3.left * playerSpeed * Time.deltaTime);    
         }
-        if (transform.position.x <= -11f)
+        if (transform.position.x <= -16f)
         {
-            transform.position = new Vector3(10.5f, transform.position.y, 0);
+            transform.position = new Vector3(15f, transform.position.y, 0);
         }
         fireDelay -= Time.deltaTime;
         if (Input.GetKey(KeyCode.Space) && fireDelay <= 0)

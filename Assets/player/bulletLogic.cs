@@ -1,9 +1,10 @@
 using UnityEngine;
 
-public class bullet : MonoBehaviour
+public class bulletLogic : MonoBehaviour
 {
-    public float bulletSpeed = 5;
+    public float bulletSpeed = 10;
     public float damage = 10f;
+   
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -15,9 +16,9 @@ public class bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.up * bulletSpeed * Time.deltaTime );
+        transform.Translate(Vector3.up * bulletSpeed * Time.deltaTime);
+        
     }
-
     private void OnTriggerEnter2D(Collider2D Collision)
     {
         if (Collision.gameObject.CompareTag("Enemy"))
@@ -28,6 +29,17 @@ public class bullet : MonoBehaviour
                 Enemy.TakeDamage(damage);
 
             }
+            Destroy(gameObject);
+        }
+
+        if (Collision.gameObject.CompareTag("Meteor"))
+        {
+           asteroidScript Meteor = Collision.gameObject.GetComponent<asteroidScript>();
+           if (Meteor != null)
+           {
+             Meteor.TakeDamage(damage);
+
+           }
             Destroy(gameObject);
         }
 

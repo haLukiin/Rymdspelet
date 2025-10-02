@@ -1,24 +1,16 @@
 using UnityEngine;
 
-public class EnemyScript : MonoBehaviour
+public class asteroidScript : MonoBehaviour
 {
-    
     public float speed = 5f;
     private int direction;
-    public float health = 100f;
-    public GameObject projectile;
-    public float fireCooldown = 1f;
-    public float currentHealth = 100f;
-    
-
-
-
+    public float health = 10f;
+    public float currentHealth = 10f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
-      direction = Random.Range(1, -1);
+        direction = Random.Range(1, -1);
 
     }
 
@@ -26,54 +18,43 @@ public class EnemyScript : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.down * speed * Time.deltaTime);
-      
-        fireCooldown -= Time.deltaTime;
-        if (fireCooldown <= 0)
-        {
-            Instantiate(projectile, new Vector3(this.transform.position.x, this.transform.position.y + -1f, 0), this.transform.rotation);
-            fireCooldown = 1f;
+        transform.Translate(Vector3.right * direction * speed * Time.deltaTime);
+        transform.Translate(Vector3.left * direction * speed * Time.deltaTime);
 
-        }
         if (currentHealth <= 0)
         {
             Destroy(gameObject);
         }
-        
-        
+
+
         if (transform.position.y <= -10f)
         {
             transform.position = new Vector3(transform.position.x, 11f, 0);
+
         }
-
-
     }
 
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-       
-        
+
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-
             playerScript Player = collision.gameObject.GetComponent<playerScript>();
 
-            if (Player != null )
-            {
-                Player.TakeDamage(20F);
 
+            if (Player != null)
+            {
+                Player.TakeDamage(5F);
             }
             Destroy(gameObject);
 
+
         }
-
-
-
     }
-
-
-
+    
 }
