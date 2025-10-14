@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class EnemyScript : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class EnemyScript : MonoBehaviour
     public GameObject projectile;
     public float fireCooldown = 1f;
     public float currentHealth = 100f;
+    public int scoreValue;
+    private gameScore ScoreManager;
     
 
 
@@ -17,14 +20,15 @@ public class EnemyScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
-      direction = Random.Range(1, -1);
+        scoreValue = 100;
+        direction = Random.Range(1, -1);
+        ScoreManager = FindAnyObjectByType<gameScore>();
 
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {        
         transform.Translate(Vector3.down * speed * Time.deltaTime);
       
         fireCooldown -= Time.deltaTime;
@@ -36,6 +40,7 @@ public class EnemyScript : MonoBehaviour
         }
         if (currentHealth <= 0)
         {
+            FindAnyObjectByType<gameScore>().AddScore(scoreValue);
             Destroy(gameObject);
         }
         
@@ -73,6 +78,17 @@ public class EnemyScript : MonoBehaviour
 
 
     }
+    /*private void OnTriggerExit2D(Collider2D other)  
+    {
+       
+        if (other.CompareTag("Player"))
+        {
+           
+
+            FindAnyObjectByType<Gamescore>().AddScore(scoreValue);
+            Destroy(gameObject);    
+        }
+    }*/   
 
 
 

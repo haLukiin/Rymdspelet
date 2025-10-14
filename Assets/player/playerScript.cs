@@ -9,7 +9,7 @@ public class playerScript : MonoBehaviour
     public float currentHealth = 100f; 
     private float fireCooldown = 0.5f;
     private float fireDelay = 0f;
-    
+    private gameScore ScoreManager;    
 
 
 
@@ -17,10 +17,9 @@ public class playerScript : MonoBehaviour
         
   // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {
-       
-
+    {        
         transform.position = new Vector3(0, -4, 0);
+        FindAnyObjectByType<gameScore>().ResetScore(0);
     }
 
     // Update is called once per frame
@@ -73,10 +72,7 @@ public class playerScript : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
-    }
-
-    
-
+    }      
 }
 
 
