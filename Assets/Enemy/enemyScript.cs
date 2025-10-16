@@ -6,10 +6,10 @@ public class EnemyScript : MonoBehaviour
     
     public float speed = 5f;
     private int direction;
-    public float health = 100f;
+    public int health = 100;
     public GameObject projectile;
     public float fireCooldown = 1f;
-    public float currentHealth = 100f;
+    public int currentHealth = 100;
     public int scoreValue;
     private gameScore ScoreManager;
     
@@ -53,7 +53,7 @@ public class EnemyScript : MonoBehaviour
 
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
        
@@ -68,7 +68,7 @@ public class EnemyScript : MonoBehaviour
 
             if (Player != null )
             {
-                Player.TakeDamage(20F);
+                Player.TakeDamage(20);
 
             }
             Destroy(gameObject);

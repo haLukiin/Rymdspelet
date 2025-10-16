@@ -4,7 +4,7 @@ public class enemybulletLogic : MonoBehaviour
 {
 
     public float bulletSpeed = 5;
-    public float damage = 5f;
+    public int damage = 5;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

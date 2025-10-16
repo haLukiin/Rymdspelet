@@ -1,32 +1,44 @@
 using UnityEngine;
-using UnityEngine.UI; 
+using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class playerLive : MonoBehaviour
 
 
 {
-    public Image[] lifeCount;
-    public int maxlives = 3;
-    private int currentlives;   
+    public Image heart1;
+    public Image heart2;
+    public Image heart3;
+    public static Image[] lifeCount;
+    public int maxLives = 3;
+    public int currentLives;
+    private playerScript playerScript;
+    public int ResetLives;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        currentlives  = maxlives;
-        
+        currentLives = maxLives;
+
+
+         
 
 
     }
-    public void LoseLife()
-    {
-        currentlives--;
-        UpdateLives();
-    }
+
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
 
+    }
+    public void LoseLife()
+    {
+
+
+        lifeCount[1].GetComponent<Image>().sprite = null;
+
+
+
+    }
 }

@@ -34,7 +34,7 @@ public class asteroidScript : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
 
@@ -49,7 +49,7 @@ public class asteroidScript : MonoBehaviour
 
             if (Player != null)
             {
-                Player.TakeDamage(5F);
+                Player.TakeDamage(5);
             }
             Destroy(gameObject);
 

@@ -1,32 +1,51 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class playerScript : MonoBehaviour
 {
 
     public float playerSpeed = 5;
-    public float maxHealth = 100f;
-    public float currentHealth = 100f; 
     private float fireCooldown = 0.5f;
     private float fireDelay = 0f;
     private gameScore ScoreManager;    
+    public int currentHealth;  
+    public int maxHealth = 100; 
+    private playerLive playerLive;
+    private int livescount;
+
 
 
 
     public GameObject projectile;
-        
-  // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {        
+    {
         transform.position = new Vector3(0, -4, 0);
         FindAnyObjectByType<gameScore>().ResetScore(0);
+
+        playerLive.GetComponent<playerLive>().LoseLife();
+
+
+
     }
+
+
 
     // Update is called once per frame
     void Update()
     {
+        
+           
+        
+        
+
+
         if (currentHealth <= 0)
         {
+            livescount--;
             Destroy(gameObject);
         }
         if (Input.GetKey(KeyCode.W))
@@ -69,10 +88,28 @@ public class playerScript : MonoBehaviour
 
         }
     }
-    public void TakeDamage(float damage)
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-    }      
+        if (currentHealth > 10)
+        {
+
+        }
+        else if (currentHealth > 5 && currentHealth <= 10)
+        {
+            
+        }
+    }
+    public void LoseLife()
+    {
+
+        playerLive.lifeCount[1].GetComponent<Image>().sprite = null;
+
+
+    }
+   
+    
+   
 }
 
 
