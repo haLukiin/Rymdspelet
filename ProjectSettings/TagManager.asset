@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Enemy
   - Meteor
+  - heart1
+  - heart2
+  - heart3
+  - playerlives
   layers:
   - Default
   - TransparentFX

@@ -12,7 +12,9 @@ public class playerScript : MonoBehaviour
     public int currentHealth;  
     public int maxHealth = 100; 
     private playerLive playerLive;
-    private int livescount;
+    private int livesCount;
+    private int currentLives;   
+    private GameOverUI gameOverUI;  
 
 
 
@@ -26,8 +28,8 @@ public class playerScript : MonoBehaviour
         transform.position = new Vector3(0, -4, 0);
         FindAnyObjectByType<gameScore>().ResetScore(0);
 
-        playerLive.GetComponent<playerLive>().LoseLife();
-
+              currentHealth = maxHealth;        
+        gameOverUI = FindAnyObjectByType<GameOverUI>(); 
 
 
     }
@@ -37,16 +39,15 @@ public class playerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-           
-        
-        
+      
+          
 
 
         if (currentHealth <= 0)
         {
-            livescount--;
+            
             Destroy(gameObject);
+            gameOverUI.ShowGameOver();  
         }
         if (Input.GetKey(KeyCode.W))
         {
@@ -91,22 +92,44 @@ public class playerScript : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        if (currentHealth > 10)
-        {
-
-        }
-        else if (currentHealth > 5 && currentHealth <= 10)
+        FindFirstObjectByType<playerLive>().LoseLife();  
+        
+        if (currentHealth > 100)
         {
             
         }
+        else if (currentHealth >75  && currentHealth <= 50)
+        {
+            currentLives--; 
+            playerLive.LoseLife();
+           
+        }
+        else if (currentHealth > 50 && currentHealth <= 25)
+        {
+            currentLives--; 
+            playerLive.LoseLife();
+
+        }
+        else if (currentHealth > 25 && currentHealth <= 2)
+        {
+            currentLives--;
+            playerLive.LoseLife();
+
+        }
+        
+        {
+            gameOverUI.ShowGameOver();           
+            
+        }       
+
+
+
+
+
+
     }
-    public void LoseLife()
-    {
 
-        playerLive.lifeCount[1].GetComponent<Image>().sprite = null;
-
-
-    }
+  
    
     
    

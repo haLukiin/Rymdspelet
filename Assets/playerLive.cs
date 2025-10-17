@@ -12,16 +12,17 @@ public class playerLive : MonoBehaviour
     public static Image[] lifeCount;
     public int maxLives = 3;
     public int currentLives;
-    private playerScript playerScript;
+    public playerScript playerScript;
     public int ResetLives;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currentLives = maxLives;
+        
 
 
-         
+
 
 
     }
@@ -34,9 +35,23 @@ public class playerLive : MonoBehaviour
     }
     public void LoseLife()
     {
+       
+        currentLives--;
 
+        if (currentLives == 2)
+        {
+            heart3.enabled = false;
+        }
+        else if (currentLives == 1)
+        {
+            heart2.enabled = false;
+        }
+        else if (currentLives == 0)
+        {
+            heart1.enabled = false;
+           
+        }   
 
-        lifeCount[1].GetComponent<Image>().sprite = null;
 
 
 

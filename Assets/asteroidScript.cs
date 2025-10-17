@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class asteroidScript : MonoBehaviour
 {
@@ -6,11 +7,14 @@ public class asteroidScript : MonoBehaviour
     private int direction;
     public float health = 10f;
     public float currentHealth = 10f;
+    private gameScore ScoreManager;
+    public int scoreValue = 25; 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         direction = Random.Range(1, -1);
+        ScoreManager = FindAnyObjectByType<gameScore>();
 
     }
 
@@ -32,6 +36,12 @@ public class asteroidScript : MonoBehaviour
             transform.position = new Vector3(transform.position.x, 11f, 0);
 
         }
+
+        if (currentHealth <= 0)
+        {
+            FindAnyObjectByType<gameScore>().AddScore(scoreValue);
+            Destroy(gameObject);
+        }
     }
 
     public void TakeDamage(int damage)
@@ -52,6 +62,8 @@ public class asteroidScript : MonoBehaviour
                 Player.TakeDamage(5);
             }
             Destroy(gameObject);
+        
+
 
 
         }

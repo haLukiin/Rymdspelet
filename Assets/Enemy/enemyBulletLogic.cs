@@ -4,7 +4,7 @@ public class enemybulletLogic : MonoBehaviour
 {
 
     public float bulletSpeed = 5;
-    public int damage = 5;
+    public int damage = 25;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,7 +27,7 @@ public class enemybulletLogic : MonoBehaviour
             playerScript Player = Collision.gameObject.GetComponent<playerScript>();
             if (Player != null)
             {
-                Player.TakeDamage(damage);
+                Player.TakeDamage(25);
 
             }
             Destroy(gameObject);

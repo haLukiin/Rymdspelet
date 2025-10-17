@@ -21,7 +21,7 @@ public class EnemyScript : MonoBehaviour
     void Start()
     {
         scoreValue = 100;
-        direction = Random.Range(1, -1);
+        direction = Random.Range(8, -8);
         ScoreManager = FindAnyObjectByType<gameScore>();
 
     }
