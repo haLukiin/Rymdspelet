@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6854459488978344033}
   - component: {fileID: 3983512470762251096}
   - component: {fileID: 5118432966487139180}
+  - component: {fileID: -3949192811093321225}
   m_Layer: 0
   m_Name: playerBullet
   m_TagString: Untagged
@@ -149,3 +150,15 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.09, y: 0.33}
   m_EdgeRadius: 0.3
+--- !u!114 &-3949192811093321225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2217669759911598010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91d8a7cd1242b2e488cdbebd3cbb5001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

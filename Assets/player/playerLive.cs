@@ -35,7 +35,6 @@ public class playerLive : MonoBehaviour
     }
     public void LoseLife()
     {
-       
         currentLives--;
 
         if (currentLives == 2)
@@ -46,11 +45,21 @@ public class playerLive : MonoBehaviour
         {
             heart2.enabled = false;
         }
-        else if (currentLives == 0)
+        else if  (currentLives == 0)
         {
             heart1.enabled = false;
            
-        }   
+        }
+        
+        
+      
+        
+        
+
+
+
+
+
 
 
 

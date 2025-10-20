@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class playerScript : MonoBehaviour
@@ -19,6 +20,7 @@ public class playerScript : MonoBehaviour
 
 
 
+
     public GameObject projectile;
 
 
@@ -27,10 +29,9 @@ public class playerScript : MonoBehaviour
     {
         transform.position = new Vector3(0, -4, 0);
         FindAnyObjectByType<gameScore>().ResetScore(0);
-
-              currentHealth = maxHealth;        
-        gameOverUI = FindAnyObjectByType<GameOverUI>(); 
-
+        
+        currentHealth = maxHealth;        
+        
 
     }
 
@@ -46,8 +47,12 @@ public class playerScript : MonoBehaviour
         if (currentHealth <= 0)
         {
             
-            Destroy(gameObject);
-            gameOverUI.ShowGameOver();  
+            Destroy(this.gameObject);       
+            FindAnyObjectByType<GameOverUI>().ShowGameOver();
+            gameOverUI.ShowGameOver();
+            SceneManager.LoadScene(0);      
+
+
         }
         if (Input.GetKey(KeyCode.W))
         {
@@ -92,6 +97,7 @@ public class playerScript : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        
         FindFirstObjectByType<playerLive>().LoseLife();  
         
         if (currentHealth > 100)
@@ -116,11 +122,8 @@ public class playerScript : MonoBehaviour
             playerLive.LoseLife();
 
         }
-        
-        {
-            gameOverUI.ShowGameOver();           
-            
-        }       
+       
+
 
 
 
